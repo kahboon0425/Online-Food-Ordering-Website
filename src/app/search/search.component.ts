@@ -17,12 +17,11 @@ export class SearchComponent {
       if(params['searchTerm'])
         this.searchTerm = params['searchTerm'];
     })
-
   }
 
   search():void{
     if(this.searchTerm)
-    this.router.navigateByUrl('/search/' + this.searchTerm);
+      this.router.navigateByUrl('/search/' + this.searchTerm);
   }
 
 }

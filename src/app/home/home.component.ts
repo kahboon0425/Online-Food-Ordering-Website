@@ -15,10 +15,13 @@ export class HomeComponent implements OnInit{
   constructor(private foodService:FoodService, private route:ActivatedRoute){}
 
   ngOnInit():void {
-    // when the params change, notify the subscribe function
+    // whenever the params change, notify the subscribe function
     this.route.params.subscribe(params => {
+      // if params.searchTerm is not undefined
       if(params['searchTerm'])
-        this.foods = this.foodService.getAll().filter(food => food.name.toLowerCase().includes(params['searchTerm'].toLowerCase()))
+        this.foods = this.foodService.getAllFoodBySearchTerm(params['searchTerm']);
+      else if(params['tag'])
+        this.foods = this.foodService.getAllFoodsByTag(params['tag']); 
       else
         this.foods = this.foodService.getAll();
     })
