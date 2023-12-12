@@ -9,6 +9,11 @@ export class FoodService {
 
   constructor() { }
 
+  getFoodById(id:number): Food{
+    // adding exclamation mark ensure that the function does not return undefined if not found the food id
+    return this.getAll().find(food => food.id == id)!;
+  }
+
   getAllFoodBySearchTerm(searchTerm:string) :Food[]{
     return this.getAll().filter(food => food.name.toLowerCase().includes(searchTerm.toLowerCase()))
   }
